@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { exoSoft } from "@/utils/fonts/fonts";
+import Header from "@/components/Header";
+import Body from "@/components/Body";
 
 export const metadata: Metadata = {
-  title: "Blaclball tools",
+  title: "Blackball tools",
   description: "A tool communication for the blackball HDF commission",
+  icons: {
+    icon: "logo_hdf_color.png",
+  },
 };
 
 export default function RootLayout({
@@ -25,10 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${exoSoft.variable} antialiased`}>
+        <Header />
+        <Body> {children}</Body>
       </body>
     </html>
   );
